@@ -1,0 +1,8 @@
+I have not managed to build, train and evaluate the `BERT_WSD` model. I got stuck on the `BertTokenizer`. The `transformers` library on the MLTGPU server is version 2.2, which makes implementation a struggle.  
+
+1. The litterature on how to work with the `transformers` library is based on later versions than 2.2. I do not get the procedures described and exemplified to work in v. 2.2 (for example: https://huggingface.co/transformers/training.html). Calling the tokenizer yields the following error: `TypeError: 'BertTokenizer' object is not callable`, which is a known problem for verison prior v3 (https://github.com/huggingface/transformers/issues/5580). 
+2. There is no `docs`for the 2.2 version of BERT on huggingface (https://huggingface.co/transformers/v2.2.0/model_doc/bert.html). 
+3. On my laptop, using the latest version of huggingface, I come to a stage where I managed to preprocess the data with `BertTokenizer` as intended (code in Jupyter Notebook), but I cannot start experiment with the training part, since (i) my prepocessing code does not run on MLTGPU, and (ii) the training of BERT (even experimenting with training of minimal datasets and batches) is impossible on my laptop. 
+4. I did spend much time trying to get `BertTokenizer` version 2.2 to work for my purposes, but I was not able to solve this. There was not enoguh time. 
+
+Since I got stuck on the tokenization issue, I did not succed with definition of the model, which (for me) would require experimenting with shapes and formats of inputs and outputs of layers (tensors) in order to make the model run as planed. The same goes for the evaluation part. My plan was to implement the same basic structure for evaluation as for the first model(s), but given the newly defined dataloader. 
